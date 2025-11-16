@@ -3,6 +3,7 @@
 Created by Awsomgamr999
 Protected under CC-BY-NC-SA
 
+NOTE: The following instructions are for the build that is compiled into a .exe, you will have to do that yourself if you get it from GitHub.
 
 ## Changelog:
 
