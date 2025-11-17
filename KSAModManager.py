@@ -195,7 +195,7 @@ def manage_mods(manifest_path, game_path):
         rebuild_manifest(manifest_path, game_path)
 
 
-def check_for_dependencies():
+def check_for_dependencies(game_path):
     content_path = os.path.join(game_path, "Content")
     if not os.path.isdir(content_path):
         print("No Content folder found.")
@@ -306,6 +306,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
