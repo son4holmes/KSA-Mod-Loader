@@ -3,8 +3,6 @@
 Created by Awsomgamr999
 Protected under CC-BY-NC-SA
 
-NOTE: The following instructions are for the build that is compiled into a .exe, you will have to do that yourself if you get it from GitHub.
-
 ## Changelog:
 
 ## 0.1.0:
@@ -13,6 +11,7 @@ NOTE: The following instructions are for the build that is compiled into a .exe,
 - paths.txt has been replaced with config.toml
 - Developers can now include a `ksamm.toml` file in their mod for configurations in the KSA Mod Loader. Currently you can specify required and optional dependencies. see [ksamm_toml information](https://github.com/Awsomgamr999/KSA-Mod-Manager/blob/main/docs/ksamm_toml.md) for instructions on how to format it.
 - Added a `docs` folder which gives detailed information on the uses of KSAMM.
+- In the spirit of a project being open code, the download link has been changed to be on GitHub and the original `KSAModLoader.py` also downloads with the rest of the tool. It is still easiest to run using the `KSAModLoader.exe`.
 
 ## Quickstart Guide:
 1. Run KSAModManager.exe
