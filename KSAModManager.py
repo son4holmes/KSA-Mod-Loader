@@ -4,9 +4,10 @@ import shutil
 import tomllib
 import tomli_w
 
-CONFIG_FILE = "paths.txt"
-MOD_SETUP_FOLDER = "ModSetup"
-
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.toml")
+MOD_SETUP_FOLDER = os.path.join(SCRIPT_DIR, "ModSetup")
+KSAMM_FILE = "ksamm.toml"
 
 def save_paths(game_data, game_files):
     data = {
@@ -194,6 +195,79 @@ def manage_mods(manifest_path, game_path):
         print("Updating manifest...")
         rebuild_manifest(manifest_path, game_path)
 
+def check_for_dependencies():
+    content_path = os.path.join(game_path, "Content")
+    if not os.path.isdir(content_path):
+        print("No Content folder found.")
+        return
+
+    mod_folders = [f for f in os.listdir(content_path) if os.path.isdir(os.path.join(content_path, f))]
+    if not mod_folders:
+        print("No mod folders found in Content/.")
+        return
+
+    # Installed mod names
+    installed_mods = set()
+    for folder in mod_folders:
+        mod_toml = os.path.join(content_path, folder, "mod.toml")
+        if os.path.exists(mod_toml):
+            mod_name = read_mod_name(mod_toml)
+            if mod_name:
+                installed_mods.add(mod_name.lower())
+
+    any_missing = False  # Track if there are any missing deps overall
+
+    for folder in mod_folders:
+        ksamm_toml = os.path.join(content_path, folder, KSAMM_FILE)
+        if not os.path.exists(ksamm_toml):
+            continue
+
+        try:
+            with open(ksamm_toml, "rb") as f:
+                data = tomllib.load(f)
+
+            missing_required = {}
+            missing_optional = {}
+
+            for key in ("dependencies", "optional_dependencies"):
+                dep_list = data.get(key, [])
+                if not isinstance(dep_list, list):
+                    continue
+                for dep in dep_list:
+                    if not isinstance(dep, dict):
+                        continue
+                    dep_name = dep.get("name", "").strip()
+                    dep_link = dep.get("link", "").strip()
+                    if not dep_name:
+                        continue
+                    if dep_name.lower() not in installed_mods:
+                        if key == "dependencies":
+                            missing_required[dep_name] = dep_link
+                        else:
+                            missing_optional[dep_name] = dep_link
+
+            # Print missing dependencies for this mod
+            if missing_required or missing_optional:
+                any_missing = True
+                print(f"\nMod: {folder}\n")
+                print("You Have Missing Dependencies!\n")
+
+                if missing_required:
+                    print("  Required:\n")
+                    for name, link in missing_required.items():
+                        print(f'    - "{name}" | "{link}"\n')
+
+                if missing_optional:
+                    print("  Optional:\n")
+                    for name, link in missing_optional.items():
+                        print(f'    - "{name}" | "{link}"\n')
+
+        except Exception as e:
+            print(f"Error reading {ksamm_toml}: {e}")
+
+    if not any_missing:
+        print("No missing dependencies found.")
+
 # Info
 print("ModManager created by Awsomgamr999.\nProtected by CC-BY-NC-SA\nYou are free to modify and release a version of this tool, so long as you credit me and don't use it for commercial purposes.")
 
@@ -216,6 +290,7 @@ def main():
             manifest, game = load_paths()
             if manifest and game:
                 install_mods(manifest, game)
+                check_for_dependencies(game)
 
         elif choice == "3":
             manifest, game = load_paths()
@@ -231,4 +306,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
