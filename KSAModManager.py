@@ -1,13 +1,65 @@
 import os
 import zipfile
+import tempfile
 import shutil
 import tomllib
 import tomli_w
+import requests
+import sys
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.toml")
 MOD_SETUP_FOLDER = os.path.join(SCRIPT_DIR, "ModSetup")
 KSAMM_FILE = "ksamm.toml"
+KSAMM_VERSION = "v0.1.2"
+
+def check_for_updates():
+    GITHUB_LATEST_RELEASE = "https://api.github.com/repos/Awsomgamr999/KSA-Mod-Manager/releases/latest"
+    try:
+        r = requests.get(GITHUB_LATEST_RELEASE, timeout=5)
+        if r.status_code != 200:
+            print("Could not check for updates.")
+            return None, None
+        data = r.json()
+        latest_version = data["tag_name"]
+        assets = data.get("assets", [])
+        if not assets:
+            print("No assets found in GitHub release.")
+            return None, None
+
+        download_url = assets[0]["browser_download_url"]
+
+        return latest_version, download_url
+
+    except Exception as e:
+        print("Update check failed:", e)
+        return None, None
+
+
+def install_update(download_url):
+    print("Downloading update...")
+
+    tmp_zip = os.path.join(tempfile.gettempdir(), "ksam_update.zip")
+
+    with requests.get(download_url, stream=True) as r:
+        r.raise_for_status()
+        with open(tmp_zip, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+
+    print("Download complete.")
+
+    install_dir = os.path.dirname(sys.executable if getattr(sys, 'frozen', False) else __file__)
+
+    print("Installing update...")
+    with zipfile.ZipFile(tmp_zip, 'r') as z:
+        z.extractall(install_dir)
+
+        print("Update installed successfully!")
+
+        print("Restarting KSAMM...")
+        os.execv(sys.executable, [sys.executable])
+
 
 def save_paths(game_data, game_files):
     data = {
@@ -277,6 +329,7 @@ def main():
         print("1. Set paths")
         print("2. Install mods")
         print("3. Manage installed mods")
+        print("4. Check for updates")
         print("q. Quit")
 
         choice = input("Choose an option: ")
@@ -296,6 +349,22 @@ def main():
             manifest, game = load_paths()
             if manifest and game:
                 manage_mods(manifest, game)
+                
+        elif choice == "4":
+            latest, url = check_for_updates()
+            if not latest:
+                print("Unable to check updates.")
+                continue
+
+            if latest == KSAMM_VERSION:
+                print("You already have the latest version.")
+                continue
+
+            print(f"A new version is available: {latest}")
+            ask = input("Install now? (y/n): ").lower()
+
+            if ask == "y":
+                install_update(url)
 
         elif choice.lower() == "q":
             break
@@ -306,6 +375,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
