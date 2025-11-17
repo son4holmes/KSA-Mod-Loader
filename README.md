@@ -3,7 +3,7 @@
 Created by Awsomgamr999
 Protected under CC-BY-NC-SA
 
-Version: 0.1.3
+Version: 0.1.2
 
 ## Changelog:
 
@@ -16,8 +16,6 @@ Version: 0.1.3
 - In the spirit of a project being open code, the download link has been changed to be on GitHub and the original `KSAModLoader.py` also downloads with the rest of the tool. It is still easiest to run using the `KSAModLoader.exe`.
 - The folder that contains the actual program is now `KSAMM/`
 ## 1.2
-- Test Release for 1.3, do not use
-## 1.3
 - Adds new selection, "4" that will check for and allow you to install updates for KSAMM.
 
 ## Quickstart Guide:
