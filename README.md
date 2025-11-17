@@ -11,7 +11,7 @@ NOTE: The following instructions are for the build that is compiled into a .exe,
 - Initial Build
 ## 1.1:
 - paths.txt has been replaced with config.toml
-- Developers can now include a `ksaml.toml` file in their mod for configurations in the KSA Mod Loader. Currently you can specify dependencies. see [ksaml.toml information]() for instructions on how to format it.
+- Developers can now include a `ksamm.toml` file in their mod for configurations in the KSA Mod Loader. Currently you can specify dependencies. see [ksamm_toml information]() for instructions on how to format it.
 
 ## Quickstart Guide:
 1. Run KSAModManager.exe
