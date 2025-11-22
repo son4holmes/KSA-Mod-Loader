@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 - All mods are downloaded and used at your own risk. You are responsible for any damage, data loss, or security issues caused by third-party mods. Always review source code and be cautious about what you run.
 - I encourage you to look through the source code yourself, or at least have AI to do it. This program is safe but this early into KSA there is not really a team validating the safety of mods and tools for KSA. Looking through and verifying that this code is safe gets you into the habit of verifying before you accidentally install a virus or something.
 
-Zipped MD5 checksum: `0147e0c5fbe18052bd1d65ecc6343d74` Read about [Checksums](https://en.wikipedia.org/wiki/Checksum).
+Zipped MD5 checksum: `e94fcadb51f017107488a319a0d48e55` Read about [Checksums](https://en.wikipedia.org/wiki/Checksum).
 
 ## Changelog:
 
