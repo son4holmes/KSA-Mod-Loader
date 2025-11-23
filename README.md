@@ -1,3 +1,5 @@
+readme will be updated soon with new changelog
+
 # KSA Mod Manager
 
 Copyright © 2025 Awsomgamr999
