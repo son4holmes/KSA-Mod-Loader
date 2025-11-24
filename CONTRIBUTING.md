@@ -1,0 +1,1 @@
+As of current, I am the only person working on KSAMM. If you would like to contribute to the source, please contact me on Discord. Otherwise, feel free to request a feature or make a fork of this project if there is a feature that you want to see.
