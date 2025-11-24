@@ -46,7 +46,7 @@ description = "Adds an example to the GitHub"
 tags = ["GitHub", "Example", "Informative"]
 license_name = "MIT"
 license_description = "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in...
-update_path = "https://spacedock.info/mod/4050/KSA%20Discord%20Rich%20Presence/download"
+update_path = "https://example.com/mod/release/latest"
 ```
 
 Planned Features:
