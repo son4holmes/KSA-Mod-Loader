@@ -9,13 +9,13 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-> Version: 0.1.5a
+> Version: 0.1.6b
 
 ### NOTE: 
 - All mods are downloaded and used at your own risk. You are responsible for any damage, data loss, or security issues caused by third-party mods. Always review source code and be cautious about what you run.
 - I encourage you to look through the source code yourself, or at least have AI to do it. This program is safe but this early into KSA there is not really a team validating the safety of mods and tools for KSA. Looking through and verifying that this code is safe gets you into the habit of verifying before you accidentally install a virus or something.
 
-Zipped MD5 checksum: `937aea6c4bd15ef543974d1cf70254f2` Read about [Checksums](https://en.wikipedia.org/wiki/Checksum).
+Zipped MD5 checksum: `0a64e8685c6ba60cb19e56047fc9af89` Read about [Checksums](https://en.wikipedia.org/wiki/Checksum).
 
 ## Changelog:
 
@@ -46,6 +46,16 @@ Zipped MD5 checksum: `937aea6c4bd15ef543974d1cf70254f2` Read about [Checksums](h
 - Hotfix for critical issues in 0.1.5
 - Mod developer metadata in `ksamm.toml` has been unlocked. You can now specify any metadata that you see fit and it will appear.
 - LICENSE.txt has been repackaged into `KSAModManager.zip`. It was forgotten in the previous release.
+## 0.1.6
+- Critical Fix: Mod dependencies will now correctly install
+- Critical Fix: Required dependencies will no longer automatically install until I have tome to add more security into the install process. Previously KSAMM would install the mod without verifying it's legitimacy.
+- QoL: KSAMM will now download the self update from SpaceDock rather than GitHub. This allows for more centeralized analytics. You can still download the latest release off of GitHub.
+- QoL: KSAMM now displays an update tip upon startup if your KSAMM version is out of date.
+## 0.1.6a
+- Critical Fix: Version Number Fix
+- Critical Fix: Mods will now correctly be added to the Manifest.toml
+## 0.1.6b
+- General: General bugfix
 
 ## Quickstart Guide:
 1. Run KSAModManager.exe
