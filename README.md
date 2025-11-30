@@ -9,7 +9,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-> Version: 0.1.6b
+> Version: 0.1.7
 
 ### NOTE: 
 - All mods are downloaded and used at your own risk. You are responsible for any damage, data loss, or security issues caused by third-party mods. Always review source code and be cautious about what you run.
@@ -56,6 +56,10 @@ Zipped MD5 checksum: `0a64e8685c6ba60cb19e56047fc9af89` Read about [Checksums](h
 - Critical Fix: Mods will now correctly be added to the Manifest.toml
 ## 0.1.6b
 - General: General bugfix
+## 0.1.7
+- Added a dependency whitelist, once mods are on the whitelist they can be redownloaded automatically, until then it prompts with the link for security.
+- You can now download and update StarMap through KSAMM
+- Other bug fixes
 
 ## Quickstart Guide:
 1. Run KSAModManager.exe
